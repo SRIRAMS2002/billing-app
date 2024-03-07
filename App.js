@@ -1,23 +1,35 @@
+// App.js
+
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import TabNavigator from "./Components/TabNavigator";
+import BottomTabNavigator from "./Components/BottomTabNavigator"; // Import the new component
 import { Text, View, StyleSheet } from "react-native";
 import Search from "./Components/Search";
-// Adjust the path based on your file structure
 
 export default function App() {
   return (
     <NavigationContainer>
-      <View style={styles.container}>
-        <Text style={styles.title}>Naveen Bakery</Text>
-      </View>
-      <Search />
+      {/* Container for the entire app */}
+      <View style={{ flex: 1 }}>
+        {/* Header Section */}
+        <View style={styles.container}>
+          <Text style={styles.title}>Naveen Bakery</Text>
+        </View>
 
-      {/* Other components or navigation can be added here */}
-      <TabNavigator />
+        {/* Main Content */}
+        <View style={{ flex: 1 }}>
+          <Search />
+
+          {/* Add the new bottom tab navigator */}
+          {/* <BottomTabNavigator /> */}
+          <TabNavigator/>
+        </View>
+      </View>
     </NavigationContainer>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     marginTop: 50,
@@ -28,6 +40,5 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 30,
-    fontFamily: "Madimi One", // Replace with the desired font family
   },
 });
