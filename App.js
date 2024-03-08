@@ -23,7 +23,9 @@ export default function App() {
 
           {/* Add the new bottom tab navigator */}
           {/* <BottomTabNavigator /> */}
+         
           <TabNavigator/>
+          <BottomTabNavigator/>
         </View>
       </View>
     </NavigationContainer>

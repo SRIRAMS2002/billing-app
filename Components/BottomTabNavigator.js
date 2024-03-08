@@ -1,20 +1,63 @@
-// BottomTabNavigator.js
-
-import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import HomeScreen from "./Screens/HomeScreen"; // Import your existing screens
-import ProfileScreen from "./Screens/ProfileScreen";
-
-const Tab = createBottomTabNavigator();
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import React from 'react';
 
 const BottomTabNavigator = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-      {/* Add more screens as needed */}
-    </Tab.Navigator>
+    <View style={styles.bottomView}>
+      <View>
+      
+      <Text  style={styles.bottomLeft2}>{'Total : 528'}</Text>
+      <Text  style={styles.bottomLeft1}>{'Quantity : 12 '}</Text>
+      </View>
+    
+      <TouchableHighlight style={styles.submitBtn}>
+        <Text style={styles.txtBtn}>Print</Text>
+      </TouchableHighlight>
+    </View>
   );
 };
 
 export default BottomTabNavigator;
+
+const styles = StyleSheet.create({
+  bottomView: {
+    position: 'absolute',
+    height: 80,
+    width: '100%',
+    bottom: 0,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    backgroundColor: '#fff',
+    elevation: 5,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    
+  },
+  submitBtn: {
+    width: '40%',
+    height: 50,
+    borderRadius: 5,
+    backgroundColor: '#273BE2',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft:55,
+   
+  },
+  txtBtn: {
+    color:'#fff',
+    fontSize:16,
+    fontWeight:'600',
+
+  },
+  bottomLeft1:{
+    marginTop:5,
+    fontSize:16,
+    fontWeight:'400',
+  },
+  bottomLeft2:{
+   
+    fontSize:20,
+    fontWeight:'600',
+  }
+});

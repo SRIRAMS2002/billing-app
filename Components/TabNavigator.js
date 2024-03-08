@@ -1,11 +1,25 @@
 import React from "react";
-import { View, Text, StyleSheet, Platform } from "react-native";
+import { View, Text, StyleSheet, Platform,  ScrollView } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import Drinks from "./Drinks";
+
 
 function Screen1() {
   return (
     <View style={styles.screen}>
       <Text>Screendddddddd 1</Text>
+      <ScrollView>
+      {/* Tea Section */}
+      <Drinks productName="Tea" />
+
+      {/* Coffee Section */}
+      {/* <Drinks productName="Coffee" />
+
+      {/* Other Juices Section */}
+      {/* <Drinks productName="Orange Juice" />
+      <Drinks productName="Apple Juice" /> */} 
+      {/* Add more drink categories as needed */}
+    </ScrollView>
     </View>
   );
 }
@@ -31,6 +45,7 @@ const Tab = createMaterialTopTabNavigator();
 const TabNavigator = () => {
   return (
     <View style={styles.container}>
+        
       <Tab.Navigator
         screenOptions={{
           tabBarScrollEnabled: true,
@@ -44,6 +59,7 @@ const TabNavigator = () => {
         <Tab.Screen name="Lunch" component={Screen3} />
         <Tab.Screen name="Dinner" component={Screen3} />
       </Tab.Navigator>
+   
     </View>
   );
 };
@@ -67,6 +83,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor:'#F7F7F7'
   },
 });
 
