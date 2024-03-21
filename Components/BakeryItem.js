@@ -19,22 +19,23 @@ const BakeryItem = ({ itemName, price, onQuantityChange }) => {
   return (
     <View style={styles.card}>
       <View>
-
-      <Text style={styles.itemName}>{itemName}</Text>
-      <Text>Price: {price} rs</Text>
+        <Text style={styles.itemName}>{itemName}</Text>
+        <Text>Price: {price} rs</Text>
+        {/* Display fetched quantity */}
+        <Text>Quantity: {quantity}</Text>
       </View>
-
-
+      {/* Quantity controls */}
       <View style={styles.quantityContainer}>
         <TouchableOpacity onPress={decreaseQuantity} style={styles.button}>
-        <Icon name="minus" size={20} color="#000" />
+          <Icon name="minus" size={20} color="#000" />
         </TouchableOpacity>
         <Text style={{ fontSize: 20 }}>{quantity}</Text>
         <TouchableOpacity onPress={increaseQuantity} style={styles.button}>
-        <Icon name="plus" size={20} color="#000" />
+          <Icon name="plus" size={20} color="#000" />
         </TouchableOpacity>
       </View>
     </View>
+
   );
 };
 
