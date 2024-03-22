@@ -20,9 +20,9 @@ const BakeryItem = ({ itemName, price, onQuantityChange }) => {
     <View style={styles.card}>
       <View>
         <Text style={styles.itemName}>{itemName}</Text>
-        <Text>Price: {price} rs</Text>
+        <Text  style={styles.Quantity}>Price: {price} rs</Text>
         {/* Display fetched quantity */}
-        <Text>Quantity: {quantity}</Text>
+        <Text  style={styles.Quantity}>Quantity: {quantity}</Text>
       </View>
       {/* Quantity controls */}
       <View style={styles.quantityContainer}>
@@ -48,12 +48,7 @@ const styles = StyleSheet.create({
       android: {
         elevation: 3, // Android elevation
       },
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-      },
+   
     }),
     padding: 16,
     width: '100%',
@@ -80,7 +75,15 @@ const styles = StyleSheet.create({
   itemName:{
     fontWeight: "bold",
     fontSize: 20,
+    marginBottom:5,
   },
+  Quantity:{
+    fontWeight: "500",
+    fontSize: 14,
+    marginTop:1,
+    color:'blue',
+
+  }
 
 });
 

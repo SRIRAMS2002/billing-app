@@ -2,13 +2,13 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import BakeryItem from './BakeryItem';
 
-const ChatItem = ({ handleQuantityChange }) => {
+const ChatItem = ({ handleQuantityChange, getItemPrice}) => {
   return (
     <View>
-      <BakeryItem itemName="PaniPuri" price={30} onQuantityChange={handleQuantityChange} />
-      <BakeryItem itemName="PeelPuri" price={25} onQuantityChange={handleQuantityChange} />
-      <BakeryItem itemName="MasalPuri" price={20} onQuantityChange={handleQuantityChange} />
-      <BakeryItem itemName="ParcelPuri" price={40} onQuantityChange={handleQuantityChange} />
+      <BakeryItem itemName="PaniPuri" price={getItemPrice('PaniPuri')} onQuantityChange={handleQuantityChange} />
+      <BakeryItem itemName="PeelPuri" price={getItemPrice('PeelPuri')} onQuantityChange={handleQuantityChange} />
+      <BakeryItem itemName="MasalPuri" price={getItemPrice('MasalPuri')} onQuantityChange={handleQuantityChange} />
+      <BakeryItem itemName="ParcelPuri" price={getItemPrice('ParcelPuri')} onQuantityChange={handleQuantityChange} />
       
     </View>
   );

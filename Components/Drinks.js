@@ -1,13 +1,21 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+// Drinks.js
+import React, { useEffect, useState } from 'react';
+import { View,Text } from 'react-native';
 import BakeryItem from './BakeryItem';
 
-const Drinks = ({ handleQuantityChange }) => {
+
+const Drinks = ({ handleQuantityChange, getItemPrice }) => {
+
+ 
+  
+  
+
   return (
     <View>
-      <BakeryItem itemName="Tea" price={12} onQuantityChange={handleQuantityChange} />
-      <BakeryItem itemName="Coffee" price={15} onQuantityChange={handleQuantityChange} />
-      <BakeryItem itemName="Vada" price={8} onQuantityChange={handleQuantityChange} />
+      <BakeryItem itemName="Tea" price={getItemPrice('Tea')} onQuantityChange={handleQuantityChange} />
+      <BakeryItem itemName="Coffee" price={getItemPrice('Coffee')} onQuantityChange={handleQuantityChange} />
+      <BakeryItem itemName="Vada" price={getItemPrice('Vada')} onQuantityChange={handleQuantityChange} />
+
     </View>
   );
 };
