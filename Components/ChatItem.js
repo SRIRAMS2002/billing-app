@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from "react";
 import {
   View,
   Text,
@@ -6,25 +6,44 @@ import {
   Platform,
   TouchableHighlight,
 } from "react-native";
-import BakeryItem from './BakeryItem';
+import BakeryItem from "./BakeryItem";
 
-const ChatItem = ({items }) => {
-
+const ChatItem = ({ items }) => {
   const chatItems = items.filter((item) => item.type === "chat");
+  const [itemCosts, setItemCosts] = useState({});
 
+  const handleCostChange = (itemName, newCost) => {
+    setItemCosts((prevItemCosts) => ({
+      ...prevItemCosts,
+      [itemName]: newCost,
+    }));
+  };
+
+  // Calculate total cost
+  const totalCost = Object.values(itemCosts).reduce(
+    (acc, curr) => acc + curr,
+    0
+  );
+
+  console.log(itemCosts);
+  console.log(totalCost)
 
   return (
-    <View  style={styles.container}>
-  {chatItems.map((item) => (
-        <BakeryItem key={item.id} itemName={item.name} price={item.price} />
+    <View style={styles.container}>
+      {chatItems.map((item) => (
+        <BakeryItem
+          key={item.id}
+          itemName={item.name}
+          price={item.price}
+          handleCostChange={handleCostChange}
+        />
       ))}
-      <View style={styles.bottomView}>
-        
+     <View style={styles.bottomView}>
         <View>
-          {/* <Text style={styles.bottomLeft2}>
-            Amount: {calculateTotalAmount()}rs
+          <Text style={styles.bottomLeft2}>
+            Amount: {totalCost}rs
           </Text>
-          <Text style={styles.bottomLeft1}>
+          {/* <Text style={styles.bottomLeft1}>
             Quantity: {calculateTotalQuantity()} units
           </Text> */}
         </View>

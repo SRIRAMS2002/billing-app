@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -11,19 +11,31 @@ import BakeryItem from './BakeryItem';
 const Tiffen = ({ items }) => {
   const TiffenItems = items.filter((item) => item.type === "tiffen");
 
- 
+  const [itemCosts, setItemCosts] = useState({});
+
+  const handleCostChange = (itemName, newCost) => {
+    setItemCosts((prevItemCosts) => ({
+      ...prevItemCosts,
+      [itemName]: newCost,
+    }));
+  };
+
+  // Calculate total cost
+  const totalCost = Object.values(itemCosts).reduce((acc, curr) => acc + curr, 0);
+
+console.log(itemCosts)
+console.log(totalCost)
   return (
     <View style={styles.container}>
         {TiffenItems.map((item) => (
-        <BakeryItem key={item.id} itemName={item.name} price={item.price} />
+        <BakeryItem key={item.id} itemName={item.name} price={item.price} handleCostChange={handleCostChange} />
       ))}
-      <View style={styles.bottomView}>
-        
+    <View style={styles.bottomView}>
         <View>
-          {/* <Text style={styles.bottomLeft2}>
-            Amount: {calculateTotalAmount()}rs
+          <Text style={styles.bottomLeft2}>
+            Amount: {totalCost}rs
           </Text>
-          <Text style={styles.bottomLeft1}>
+          {/* <Text style={styles.bottomLeft1}>
             Quantity: {calculateTotalQuantity()} units
           </Text> */}
         </View>

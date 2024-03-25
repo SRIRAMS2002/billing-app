@@ -12,15 +12,7 @@ import BakeryItem from "./BakeryItem";
 const Drinks = ({ items }) => {
   const drinkItems = items.filter((item) => item.type === "drinks");
 
-  // const [totCost, setTotCost] = useState(0);
-  
-  // const handleQuantityChangePlus = (oldCost,newCost) => {
-  //   setTotCost((prevCost) => prevCost - oldCost + newCost);
-  // };
-  
-  // const handleQuantityChangeMinus = (oldCost,newCost) => {
-  //   setTotCost((prevCost) => prevCost - newCost + oldCost);
-  // };
+
 
   const [itemCosts, setItemCosts] = useState({});
 
@@ -35,8 +27,7 @@ const Drinks = ({ items }) => {
   const totalCost = Object.values(itemCosts).reduce((acc, curr) => acc + curr, 0);
 
 console.log(itemCosts)
-
-  
+console.log(totalCost)
 
   return (
     <View style={styles.container}>
@@ -66,6 +57,7 @@ console.log(itemCosts)
 };
 
 export default Drinks;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
