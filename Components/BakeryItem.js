@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo';
-const BakeryItem = ({ itemName, price, onQuantityChange }) => {
+//BakeryItem.js
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  Platform,
+} from "react-native";
+import Icon from "react-native-vector-icons/Entypo";
+const BakeryItem = ({ itemName, price, handleCostChange }) => {
   const [quantity, setQuantity] = useState(0);
 
-  const increaseQuantity = () => {
+  const handleIncreaseQuantity = () => {
     setQuantity(quantity + 1);
-    onQuantityChange(itemName, quantity + 1);
+    handleCostChange(itemName, price * (quantity + 1));
   };
 
-  const decreaseQuantity = () => {
+  const handleDecreaseQuantity = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
-      onQuantityChange(itemName, quantity - 1);
+      handleCostChange(itemName, price * (quantity - 1));
     }
   };
 
@@ -20,71 +27,66 @@ const BakeryItem = ({ itemName, price, onQuantityChange }) => {
     <View style={styles.card}>
       <View>
         <Text style={styles.itemName}>{itemName}</Text>
-        <Text  style={styles.Quantity}>Price: {price} rs</Text>
+        <Text style={styles.Quantity}>Price: {price} rs</Text>
         {/* Display fetched quantity */}
-        <Text  style={styles.Quantity}>Quantity: {quantity}</Text>
+        <Text style={styles.Quantity}>Quantity: {quantity}</Text>
       </View>
       {/* Quantity controls */}
       <View style={styles.quantityContainer}>
-        <TouchableOpacity onPress={decreaseQuantity} style={styles.button}>
+        <TouchableOpacity onPress={handleDecreaseQuantity} style={styles.button}>
           <Icon name="minus" size={20} color="#000" />
         </TouchableOpacity>
         <Text style={{ fontSize: 20 }}>{quantity}</Text>
-        <TouchableOpacity onPress={increaseQuantity} style={styles.button}>
+        <TouchableOpacity onPress={handleIncreaseQuantity} style={styles.button}>
           <Icon name="plus" size={20} color="#000" />
         </TouchableOpacity>
       </View>
     </View>
-
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#F5F5F5',
+    backgroundColor: "#F5F5F5",
     borderRadius: 8,
     marginVertical: 8,
     ...Platform.select({
       android: {
         elevation: 3, // Android elevation
       },
-   
     }),
     padding: 16,
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 
   quantityContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between', // Adjusted to add space
-    paddingHorizontal: 10, 
-
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between", // Adjusted to add space
+    paddingHorizontal: 10,
   },
   button: {
-    backgroundColor: '#AEB8FF',
+    backgroundColor: "#AEB8FF",
     borderRadius: 50,
     padding: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 7, 
+    justifyContent: "center",
+    alignItems: "center",
+    marginHorizontal: 7,
   },
-  itemName:{
+  itemName: {
     fontWeight: "bold",
     fontSize: 20,
-    marginBottom:5,
+    marginBottom: 5,
   },
-  Quantity:{
+  Quantity: {
     fontWeight: "500",
     fontSize: 14,
-    marginTop:1,
-    color:'blue',
-
-  }
-
+    marginTop: 1,
+    color: "blue",
+  },
 });
 
 export default BakeryItem;

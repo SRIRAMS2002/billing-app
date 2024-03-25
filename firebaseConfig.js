@@ -1,8 +1,13 @@
+import { initializeApp } from "firebase/app";
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/firestore'
-import 'firebase/compat/auth'
+// Optionally import the services that you want to use
+// import {...} from "firebase/auth";
+// import {...} from "firebase/database";
+import { getFirestore } from "firebase/firestore";
+// import {...} from "firebase/functions";
+// import {...} from "firebase/storage";
 
+// Initialize Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyAOD519HYi521CaD3TD1RqnKAUXI9XbRk8",
   authDomain: "naveen-backery.firebaseapp.com",
@@ -12,9 +17,10 @@ const firebaseConfig = {
   appId: "1:1022891805181:web:bcade6071a42a486993194"
 };
 
-if(!firebase.apps.length){
-    firebase.initializeApp(firebaseConfig)
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
-  }
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
 
-  export { firebase };
+export { db };
