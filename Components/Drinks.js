@@ -9,10 +9,54 @@ import {
 } from "react-native";
 import BakeryItem from "./BakeryItem";
 
+
 const Drinks = ({ items }) => {
   const drinkItems = items.filter((item) => item.type === "drinks");
 
+  // const printBill = async () => {
+  //   try {
+  //     const bluetoothManager = new BluetoothManager();
 
+  //     // Check Bluetooth availability
+  //     BluetoothManager.isBluetoothEnabled().then((enabled)=> {
+  //       alert(enabled) // enabled ==> true /false
+  //   }, (err)=> {
+  //       alert(err)
+  //   });
+
+  //     // Scan for printers (replace with your printer's MAC address)
+  //     const printer = await bluetoothManager
+  //       .scanDevices()
+  //       .then((devices) =>
+  //         devices.find((device) => device.name === "Your Printer Name")
+  //       );
+
+  //     if (!printer) {
+  //       console.warn("Bluetooth printer not found!");
+  //       return;
+  //     }
+
+  //     // Connect to the printer
+  //     await bluetoothManager.connect(printer.address);
+
+  //     // Create a printer instance
+  //     const escposPrinter = new BluetoothEscposPrinter(printer.address);
+
+  //     // Print your bill content here using escposPrinter methods
+  //     await escposPrinter.addText("Bakery Billing System\n");
+  //     await escposPrinter.addText("Items:\n");
+  //     // ... Add item details, quantity, and price using escposPrinter methods
+  //     await escposPrinter.addText(`Total: ${totalCost}rs\n`);
+  //     await escposPrinter.cutPaper(); // Cut the paper after printing
+
+  //     console.log("Bill printed successfully!");
+  //   } catch (error) {
+  //     console.error("Error printing bill:", error);
+  //   } finally {
+  //     // Disconnect from the printer
+    
+  //   }
+  // };
 
   const [itemCosts, setItemCosts] = useState({});
 
@@ -24,31 +68,32 @@ const Drinks = ({ items }) => {
   };
 
   // Calculate total cost
-  const totalCost = Object.values(itemCosts).reduce((acc, curr) => acc + curr, 0);
+  const totalCost = Object.values(itemCosts).reduce(
+    (acc, curr) => acc + curr,
+    0
+  );
 
-console.log(itemCosts)
-console.log(totalCost)
+  console.log(itemCosts);
+  console.log(totalCost);
 
   return (
     <View style={styles.container}>
       {drinkItems.map((item) => (
         <BakeryItem
-        key={item.id}
-        itemName={item.name}
-        price={item.price}
-        handleCostChange={handleCostChange}
+          key={item.id}
+          itemName={item.name}
+          price={item.price}
+          handleCostChange={handleCostChange}
         />
       ))}
       <View style={styles.bottomView}>
         <View>
-          <Text style={styles.bottomLeft2}>
-            Amount: {totalCost}rs
-          </Text>
+          <Text style={styles.bottomLeft2}>Amount: {totalCost}rs</Text>
           {/* <Text style={styles.bottomLeft1}>
             Quantity: {calculateTotalQuantity()} units
           </Text> */}
         </View>
-        <TouchableHighlight style={styles.submitBtn}>
+        <TouchableHighlight style={styles.submitBtn} >
           <Text style={styles.txtBtn}>Print</Text>
         </TouchableHighlight>
       </View>
